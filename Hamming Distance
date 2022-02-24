@@ -9,4 +9,26 @@ Explanation:
 4   (0 1 0 0)
        ↑   ↑
 ----------------------------------------------------------------------------------------------------------------------
+Solution 1: (Using Bit Manipulation)
+
+```cpp 
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+
+        int ans=0;
+        
+        while(x || y){  // till x or y is present
+            int bit1 = x&1; //rightmost bit of x
+            int bit2 = y&1;
+            
+            if(bit1!=bit2) ans++;
+            x>>=1; //x/=2; //x=x/2
+            y>>=1; //y/=2;
+        }        
+        return ans;
+    }
+};
+```
+
 

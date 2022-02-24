@@ -31,4 +31,23 @@ public:
 };
 ```
 
+Solution 2: (Using XOR)
+
+
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+
+        int ans = 0;
+        
+         int n=x^y;
+         while(n){
+             int r_bit = n & 1;
+            
+             if(r_bit == 1) ans++;
+             n >>=1;
+        }
+        return ans;
+    }
+};
 

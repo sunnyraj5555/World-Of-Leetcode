@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> twoOutOfThree(vector<int>& n1, vector<int>& n2, vector<int>& n3) {
+        sort(n1.begin(), n1.end());
+        n1.erase(unique(n1.begin(), n1.end()), n1.end());
+        
+        sort(n2.begin(), n2.end());
+        n2.erase(unique(n2.begin(), n2.end()), n2.end());
+        
+        sort(n3.begin(), n3.end());
+        n3.erase(unique(n3.begin(), n3.end()), n3.end());
+        
+        vector<int> n4;
+        vector<int> n5;
+        int i,a=0;
+        for(i=0; i<n1.size(); i++)
+            n4.push_back(n1[i]);
+        
+        for(i=0; i<n2.size(); i++)
+            n4.push_back(n2[i]);
+        
+        for(i=0; i<n3.size(); i++)
+            n4.push_back(n3[i]);
+        
+        sort(n4.begin(), n4.end());
+        
+        for(i=0;i<n4.size()-1;i++)
+        {
+            if(n4[i]==n4[i+1])
+            { 
+                a=n4[i];
+                n5.push_back(a);
+            }
+            
+        }
+        sort(n5.begin(), n5.end());
+        n5.erase(unique(n5.begin(), n5.end()), n5.end());
+        return n5;
+
+    }
+};

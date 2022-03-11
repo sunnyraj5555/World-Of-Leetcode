@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        
+        int space = 0;
+        int count = 0;
+        
+        for(int i=0; i<sentences.size(); i++){
+            // will use sentences[i].size() because in each index 
+            // we have to move till the last word of the index string 
+            
+            for(int j=0; j<sentences[i].size(); j++){
+                
+                if(sentences[i][j]== ' '){
+                    count++;
+                }
+            }
+            space = max(space,count); 
+            count = 0; //everytime we have to make count = 0
+        }
+        
+        return space+1;
+    }
+};

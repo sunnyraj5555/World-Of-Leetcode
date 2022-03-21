@@ -1,0 +1,57 @@
+class Solution {
+public:
+    int minDominoRotations(vector<int>& top, vector<int>& bottom) {
+        
+        unordered_map<int, int> mp;
+        // storing the count of each number
+        
+        for(int i=0; i<top.size(); i++){
+            mp[top[i]]++;
+        }
+        int res = INT_MAX;
+        
+        for(auto j: mp){
+            int count = 0,i; 
+            
+            for(i=0; i<top.size(); i++){
+                
+                 if(j.first == top[i])
+                     continue;
+                else if(j.first == bottom[i])
+                    count++;
+                else 
+                    break;
+            }
+            
+            if(i==top.size())
+            res=min(res,count);
+        }
+        
+        unordered_map<int,int> mp2;
+        
+        for(int i=0;i<bottom.size();i++)
+            mp2[bottom[i]]++;
+        
+        int res2=INT_MAX;
+        for(auto j:mp2)
+        {
+            int count=0,i;
+            for(i=0;i<bottom.size();i++)
+            {
+                if(j.first==bottom[i])
+                    continue;
+                else if(j.first==top[i])
+                    count++;
+                else
+                    break;
+            }
+            if(i==bottom.size())
+            res2=min(res2,count);
+        }
+        
+        if(res2==INT_MAX && res==INT_MAX)
+            return -1;
+        return min(res,res2);
+        
+    }
+};

@@ -1,0 +1,53 @@
+class Solution {
+public:
+    bool validPalindrome(string s) {
+        
+        int i=0;
+        int j=s.size()-1;
+        int ct=0;
+        
+        while(i<j){
+                    	// if char matches increment i and decrement j
+
+            if(s[i] == s[j]){ 
+                i++;
+                j--;
+            }
+            else{
+                ct++;       // keeping count of character that didn't match
+                i++;        //skip 1 from starting
+            }
+            
+        if(ct >1) break;
+
+        }
+        
+        
+        // reinitialize pointer 
+        i=0;
+        j=s.length()-1;
+        int ct1=0;
+        
+        while(i<j){
+                            // if char matches increment i and decrement j
+            if(s[i] == s[j]){
+                i++;
+                j--;
+            }
+            else{
+                ct1++;       // keeping count of character that didn't match
+                j--;        //skip 1 from ending
+            }
+            
+        if(ct1 >1) break;
+
+        }
+        
+        if(ct == 1 || ct1 == 1)   //del atmost one char
+            return true;
+        if(ct == 0 || ct1 == 0)    //palindrome
+            return true;
+        
+        return false;
+    }
+};

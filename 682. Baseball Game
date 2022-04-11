@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        
+        stack<int> st;
+        int ans=0;
+        
+        for(auto c: ops)
+        {
+            
+            if(c == "C")
+            {
+                st.pop();
+            }
+            else if(c == "D")
+            {
+                st.push(st.top()*2);
+            }
+            else if(c == "+")
+            {
+                int temp1 = st.top(); // storing top value in another to delete it
+                st.pop();             // deleting so that we can get second number in stack
+                int temp2 = st.top(); // also storing second value in another temp variable
+                
+                st.push(temp1);       // pushing removed element
+                st.push(temp1 + temp2); // as "+" was there so have to push sum of last both
+            }
+            else
+            {
+                st.push(stoi(c));        //stoi() to convert string into integer 
+            }
+        }
+        
+        while(st.size() != 0)
+        {
+            ans += st.top();
+            st.pop();
+        }
+        return ans;
+    }
+};
